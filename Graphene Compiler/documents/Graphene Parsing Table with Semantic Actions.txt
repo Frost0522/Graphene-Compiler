@@ -1,0 +1,81 @@
+…								IDENTIFIER								fn								integer								boolean								BOOLEAN-LITERAL								INTEGER-LITERAL								","								:								+								-								*								/								print								and								or								not								if								else								==								<								(								)								$
+
+DEFINITION-LIST						.		     DEFINITION-LIST := DEFINITION MAKE-DEF-EXP DEFINITION-LIST		   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.						 DEFINITION-LIST := ε
+ 
+DEFINITION							.		 DEFINITION := "fn" IDENTIFIER "(" PARAMETER-LIST ")" "->" TYPE BODY	   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.            	  
+
+PARAMETER-LIST			    PARAMETER-LIST := FORMAL-PARAMETERS					.							        .					              		   .       								  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.						 PARAMETER-LIST := ε						.             	  
+					
+FORMAL-PARAMETERS	FORMAL-PARAMETERS := ID-WITH-TYPE MAKE-IWT-EXP ID-WITH-TYPE'		.								   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.            	  
+
+ID-WITH-TYPE                  ID-WITH-TYPE := IDENTIFIER "":"" TYPE					.								   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.             	  
+
+ID-WITH-TYPE'							.									.								   .									   .										  .											  .                 ID-WITH-TYPE' := "," FORMAL-PARAMETERS MAKE-FRML-PARAM-EXP		.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.						  ID-WITH-TYPE' := ε						.             	  
+
+TYPE									.									.					   TYPE := "integer" MAKE-INT-EXP			  TYPE := "boolean" MAKE-BOOL-EXP    						  .					              				  .        								 .					            	.          						.						       	.								.								.					   			  .									 .								.						    		 .				   				.      					     	 .								.								.								.								.								.			  
+
+BODY							   BODY := EXPRESSION							.							 	   .						             	   .			    						BODY := EXPRESSION							   BODY := EXPRESSION								 .						        	.         						.							BODY := EXPRESSION						.								.			     BODY := PRINT-EXPRESSION BODY MAKE-BODY-EXP				 .								.						    BODY := EXPRESSION				   BODY := EXPRESSION					  	 .								.								.						   BODY := EXPRESSION						.								.			  
+
+PRINT-EXPRESSION						.									.								   .									   .										  .											  .										 .								.								.								.								.								.	      PRINT-EXPRESSION := "print" MAKE-PRINT-EXP "(" EXPRESSION ")"			 .								.								 .								.								 .								.								.								.								.								.			  
+
+EXPRESSION		   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'			.								   .									   .					     EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'				 .								.								.			   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'		.								.								  .									 .								.       EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'     EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'	 .								.								.			   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'		.								. 		 	  
+
+EXPRESSION'							.									.								   .									   .										  .											  .				   EXPRESSION' := "," FORMAL-ARGUMENTS MAKE-FRML-ARGS-EXP			.								.								.								.								.								  .									 .								.								 .								.							   	 .        						.								.								.							EXPRESSION' := ε					   	.			  
+
+SIMPLE-EXPRESSION             SIMPLE-EXPRESSION := TERM TERM'						.								   .									   .							   SIMPLE-EXPRESSION := TERM TERM'			      SIMPLE-EXPRESSION := TERM TERM'							 .								.								.					SIMPLE-EXPRESSION := TERM TERM'					.								.								  .									 .								.					SIMPLE-EXPRESSION := TERM TERM'		 SIMPLE-EXPRESSION := TERM TERM'					 .								.								.					SIMPLE-EXPRESSION := TERM TERM'                   	.             						.			  
+
+SIMPLE-EXPRESSION'		 	            	.							SIMPLE-EXPRESSION' := ε						   .									   .										  .											  .								  SIMPLE-EXPRESSION' := ε					.						 SIMPLE-EXPRESSION' := ε			SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε						  .							SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε						 .								.						SIMPLE-EXPRESSION' := ε SIMPLE-EXPRESSION' := "==" MAKE-EQUALS-EXP EXPRESSION SIMPLE-EXPRESSION' := "<" MAKE-LESS-THAN-EXP EXPRESSION .				SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε	  				
+
+TERM							TERM := FACTOR FACTOR'							.								   .									   .								  TERM := FACTOR FACTOR'						  TERM := FACTOR FACTOR'							 .								.								.						TERM := FACTOR FACTOR'						.								.								  .									 .								.						 TERM := FACTOR FACTOR'				TERM := FACTOR FACTOR'						 .								.								.						TERM := FACTOR FACTOR'						.								.			  
+
+TERM'								.								TERM' := ε							   .									   .										  .											  .									  TERM' := ε							.				TERM' := "+" TERM MAKE-PLUS-EXP TERM'	   TERM' := "-" TERM MAKE-MINUS-EXP TERM'			TERM' := ε						TERM' := ε							  .								 TERM' := ε				 TERM' := "or" TERM MAKE-OR-EXP TERM'				 .								.							 TERM' := ε						TERM' := ε						TERM' := ε							.							TERM' := ε						TERM' := ε		  
+
+FACTOR				FACTOR := IDENTIFIER MAKE-ID-EXP IDENTIFIER'				.								   .									   .								    FACTOR := LITERAL							    FACTOR := LITERAL								 .								.								.					FACTOR := "-" MAKE-NEG-EXP FACTOR					.								.								  .									 .								.		FACTOR := "not" MAKE-NOT-EXP FACTOR FACTOR := "if" MAKE-IF-EXP "(" EXPRESSION ")" MAKE-THEN-EXP EXPRESSION "else" MAKE-ELSE-EXP EXPRESSION .	.								.					 FACTOR := "(" EXPRESSION ")"					.								.			  
+
+FACTOR'								.							    FACTOR' := ε							   .									   .										  .											  .									 FACTOR' := ε 							.							FACTOR' := ε					   	FACTOR' := ε		FACTOR' := "*" FACTOR MAKE-TIMES-EXP FACTOR' 	FACTOR' := "/" FACTOR MAKE-DIVIDE-EXP FACTOR'		  .				    FACTOR' := "and" FACTOR MAKE-AND-EXP FACTOR'		FACTOR' := ε							 .								.                                  FACTOR' := ε 					FACTOR' := ε						FACTOR' = ε							.						    FACTOR' := ε					    FACTOR' := ε		  
+
+IDENTIFIER'							.							  IDENTIFIER' := ε							   .									   .										  .											  .									IDENTIFIER' := ε						.						   IDENTIFIER' := ε					  IDENTIFIER' := ε					   IDENTIFIER' := ε					   IDENTIFIER' := ε							  .								IDENTIFIER' := ε				   IDENTIFIER' := ε							 .								.							IDENTIFIER' := ε					IDENTIFIER' := ε				   IDENTIFIER' := ε			  IDENTIFIER' := "(" ARGUMENT-LIST ")"			  IDENTIFIER' := ε					  IDENTIFIER' := ε																									
+
+ARGUMENT-LIST			    ARGUMENT-LIST := FORMAL-ARGUMENTS						.								   .									   .						     ARGUMENT-LIST := FORMAL-ARGUMENTS					 ARGUMENT-LIST := FORMAL-ARGUMENTS						 .								.								.				    ARGUMENT-LIST := FORMAL-ARGUMENTS					.								.								  .									 .								.					ARGUMENT-LIST := FORMAL-ARGUMENTS	    ARGUMENT-LIST := FORMAL-ARGUMENTS					 .								.								.				     ARGUMENT-LIST := FORMAL-ARGUMENTS		      ARGUMENT-LIST := ε						.			  
+
+FORMAL-ARGUMENTS		FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'					.								   .									   .						FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'			 FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'						 .								.								.				FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'				.								.								  .									 .								.			  FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'   FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'			 .								.								.			      FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'			.								.			  
+
+LITERAL								.									.								   .									   .						LITERAL := BOOLEAN-LITERAL MAKE-BOOL-LIT-EXP		 LITERAL := INTEGER-LITERAL MAKE-INT-LIT-EXP					 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							

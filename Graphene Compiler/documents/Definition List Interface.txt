@@ -1,0 +1,142 @@
+public interface DefinitionList
+{
+}
+
+//DEFINITION-LIST
+
+public class ListOfDefinitions implements DefinitionList
+{
+	private Definition definition
+	private DefinitionList definition-list
+
+	public ListOfDefinitions(Definition d, DefinitionList, dl)
+	{
+		definition = d;
+		definition-list = dl;
+	}
+
+	public String getDefinition() {return (definition + definition-list);}
+}
+
+//DEFINITION
+
+public class FunctionDefinition implements DefinitionList 
+{
+	private Identifier identifer;
+	private ParameterList parameter-list;
+	private Type type;
+	private Body body;
+
+	public FunctionDefinition(Identifier i, ParameterList pl, Type t, Body b)
+	{
+		identifier = i;
+		parameter-list = pl;
+		type = t;
+		body = b;
+	}
+
+	public String getIdentifier() 
+	{return ("fn" + identifier + "(" + parameter-list + ")" + "->" 
+		 + type + body);
+	}
+}
+
+//PARAMETER-LIST
+
+public class ParametersListDefinition implements DefinitionList
+{	
+	private FormalParameters formal-parameters;
+
+	public ParametersListDefinition(FormalParameters fp)
+	{
+		formal-parameters = fp;
+	}
+
+	public String getParametersList() {return formal-parameters;} 
+}
+
+//FORMAL-PARAMETERS
+
+public class FormalParametersDefinition implements DefinitionList
+{	
+	private IdWithType id-with-type;
+	private IdWithType_P id-with-type_p;
+	private FormalParameters formal-parameters;
+
+	public FormalParametersDefinition(IdWithType id, IdWithType_P idp)
+	{
+		id-with-type = id;
+		id-with-type_p = idp;
+	}
+
+	public FormalParametersDefinition(IdWithType id, FormalParameters fp)
+	{
+		id-with-type = id;
+		formal-parametes = fp;
+	}
+	
+	// note to self, find out if this works or not.
+	public String getFormalParametersDefinition() 
+	{return (id-with-type + id-with-type_p);}
+
+	public String getFormalParametersDefinition() 
+	{return (id-with-type + "," + formal-parameters);} 
+}
+
+//ID-WITH-TYPE
+
+public class IdWithTypeDefinition implements DefinitionList
+{
+	private Identifier identifier;
+	private Type type;
+
+	public IdWithTypeDefinition(Identifier i, Type t)
+	{
+		identifier = i;
+		type = t;
+	}
+
+	public String getIdWithType() {return (identifier + ":" + type);}
+}
+
+//TYPE
+
+public class TypeDefinition implements DefinitionList
+{
+	private String value;
+
+	public TypeDefinition(Token t)
+	{
+		value = t.getvalue();
+	}
+
+	public String getType() {return value;}
+}
+
+//BODY
+
+public class BodyDefinition implements DefinitionList
+{
+	private PrintExpression print-expression;
+	private Body body;
+	private Expression expression;
+
+	public BodyDefinition(Expression e)
+	{
+		expression = e;
+	}
+
+	public BodyDefinition(PrintExpression pe, Body b)
+	{
+		print-expression = pe;
+		body = b;
+	}
+
+	public String getBody() {return print-expression + body}
+	public String getBody() {return expression}
+}
+
+
+
+
+

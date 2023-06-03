@@ -1,0 +1,49 @@
+// A cicular number is a number who's power is that number and also ends in that number as well.
+// An example of this would be 6^(6) = 46,656. The ones place is also 6, it is a circular number.
+// Above is the previous description of what this program had intended to do, this is clearly no
+// longer the case. Below is a nightmare of a program directed at testing the semantic accuracy
+// of our graphene compiler. The errors below are each of the 16 semantic inaccuracies one may
+// find in a graphene program, as disscussed in class, session 16, exercise 2. For the properly
+// working version of this program, please see circular-number.gr.
+
+// Exponent arithmetic function from lib.gr.
+
+fn EXP(m : integer, m : integer) -> integer                            // Formal parameter on the same function have the same name m.
+   if (n == p) true else m * EXP(m, n-1)                               // Expression uses variable p that does not exist. The Fucntion EXP is also returning the wrong type of value true in the if expression.
+
+fn EXP() -> boolean false                                              // Two functions with the name EXP.
+
+// Constant for power value
+
+fn main-helper(power : integer, unused : boolean) -> integer power     // Variable unused is never used.
+
+// Modulus by hand from graphene programs.zip
+
+fn mod-helper(m : integer, n : integer) -> integer
+   if (m / n)                                                          // Condition on if expression (m / n) is not boolean.
+      m * false                                                        // Expression x * false gives wrong type of value to an operator
+   else
+      mod-helper(m-n, n, 1)                                            // Function call mod-helper passes wrong number of arguments.
+
+fn mod(m : integer, n : integer) -> integer
+   mod-helper(m, n)
+
+fn circular-number(num : integer) -> integer                           // There is no longer a funtion named main, only circular-number funtion.
+   if ( mod(((EXP(num, main-helper(false))) - num), 10) == 0 )         // Function call main-helper pass wrong type of argument.
+      num + notreal()                                                  // Expression calls function notreal(), that does not exist.
+      print(" is a circular number.")
+   else if (1 == 0)                                                    // Then and else clauses of the if expression have different types for function main. The else if code path will never execute.
+      true
+   else                                                                
+      false 
+      print(" is not a circular number.")
+
+fn print() -> integer 0                                                // There is a function named print.
+
+fn untouched() -> boolean false                                        // This function untouched() is never used in the program.
+
+fn infinity(n : integer) -> integer                                    // Function infinity() never terminates.
+   if (n < 0)
+      infinity(-n)
+   else
+      infinity(n+1)
