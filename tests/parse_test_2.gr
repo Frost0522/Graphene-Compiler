@@ -1,0 +1,4 @@
+fn parse_test_2(a : and, b : boolean, c : or) -> boolean
+   print(a)
+   print(b)
+   print(c)

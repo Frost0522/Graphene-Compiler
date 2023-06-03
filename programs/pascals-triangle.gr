@@ -1,0 +1,37 @@
+//Pascal's triangle
+
+fn main(rows : integer) -> integer
+      leftSpacing(rows, inRange(rows, 1))
+      nCr(inRange(rows-1, 0), 0)
+   
+fn factorial(n : integer) -> integer
+   factorialhelper(n, 1)
+
+fn factorialhelper(n : integer, current : integer) -> integer
+   if (n == 0)
+      1
+   else if (n == current)
+      n
+   else
+      current * factorialhelper(n-1, current)
+
+fn inRange(n : integer, i : integer) -> integer
+   if (n == i)
+      i
+   else
+	i
+      inRange(n, i+1)
+
+fn leftSpacing(n : integer, current : integer) -> integer
+   if (n == current)
+      print(" ")
+   else
+	print(" ")
+      leftSpacing(n-1, current)
+
+fn nCr(i : integer, j integer): -> integer
+   print(factorial(i)/(factorial(inRange(i, j))*factorial(i-inRange(i, j)) + " "))
+   print()
+
+
+            

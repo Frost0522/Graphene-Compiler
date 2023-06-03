@@ -1,0 +1,73 @@
+								First							Follow
+
+
+DEFINITION-LIST                       {"fn", ε}                               {$}
+
+
+DEFINITION                            {"fn"}                                  {$, "fn"}
+
+
+PARAMETER-LIST                        {IDENTIFIER, ε}                         {")"}
+
+
+FORMAL-PARAMETERS                     {IDENTIFIER}                            {")"}
+
+
+ID-WITH-TYPE                          {IDENTIFIER}                            {",", ")"}
+
+
+ID-WITH-TYPE'                         {",", ε}                                {")"}
+
+
+PRINT-EXPRESSION                      {"print"}                               {"print", "not", "-", IDENTIFIER, "if",
+                                                                               "(", BOOLEAN-LITERAL, INTEGER-LITERAL}
+
+
+EXPRESSION                            {"not", "-", IDENTIFIER, "if", "(",     {",", ")", "else", "and", "*", "/", "fn",
+                                       BOOLEAN-LITERAL, INTEGER-LITERAL}       $, "or", "+", "-", "==", "<"}
+                                            
+                                                                                
+SIMPLE-EXPRESSION                     {"not", "-", IDENTIFIER, "if", "(",     {"==", "<", ",", ")", "else", "and", "*",
+                                       BOOLEAN-LITERAL, INTEGER-LITERAL}       "/", "fn", $, "or", "+", "-"}
+                                                     
+
+SIMPLE-EXPRESSION'                    {"==", "<", ε}                          {",", ")", "else", "and", "*", "/", "fn",
+                                                                               $, "or", "+", "-", "==", "<"}
+
+
+TERM                                  {"not", "-", IDENTIFIER, "if", "(",     {"or", "+", "-", "==", "<", ",", ")",
+                                       BOOLEAN-LITERAL, INTEGER-LITERAL}       "else", "and", "*", "/", "fn", $}
+                                                     
+
+TERM'                                 {"or", "+", "-", ε}                     {	"==", "<", ",", ")", "else", "and", "*",
+                                                                                "/", "fn", $, "or", "+", "-"}
+
+
+FACTOR                                {"not", "-", IDENTIFIER, "if", "(",     {"and", "*", "/", "or", "+", "-", "==", 
+                                       BOOLEAN-LITERAL, INTEGER-LITERAL}       "<", ",", ")", "else", "fn", $}
+                                            
+                                                    
+FACTOR'                               {"and", "*", "/", ε}                    {"or", "+", "-", "==", "<", ",", ")", 
+                                                                               "else", "and", "*", "/", "fn", $}
+
+
+IDENTIFIER'                           {"(", ε}                                {"and", "*", "/", "or", "+", "-", "==", 
+                                                                               "<", ",", ")", "else", "fn", $}
+
+
+ARGUMENT-LIST                         {ε, "not", "-", IDENTIFIER, "if", "(",  {")"}
+                                       BOOLEAN-LITERAL, INTEGER-LITERAL}     
+
+
+FORMAL-ARGUMENTS                      {"not", "-", IDENTIFIER, "if", "(",     {")"}
+                                       BOOLEAN-LITERAL, INTEGER-LITERAL}    
+                                       
+
+EXPRESSION'                           {",", ε}                                {")"}
+
+
+LITERAL                               {BOOLEAN-LITERAL,                       {"and", "*", "/", "or", "+", "-", "==", 
+                                       INTEGER-LITERAL}                        "<", ",", ")", "else", "fn", $}
+                                       
+
+                              

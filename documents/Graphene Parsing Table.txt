@@ -1,0 +1,81 @@
+…								IDENTIFIER								fn								integer								boolean								BOOLEAN-LITERAL								INTEGER-LITERAL								","								:								+								-								*								/								print								and								or								not								if								else								==								<								(								)								$
+
+DEFINITION-LIST						.					DEFINITION-LIST := DEFINITION DEFINITION-LIST			   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.						 DEFINITION-LIST := ε
+ 
+DEFINITION							.		 DEFINITION := "fn" IDENTIFIER "(" PARAMETER-LIST ")" "->" TYPE BODY	   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.            	  
+
+PARAMETER-LIST			    PARAMETER-LIST := FORMAL-PARAMETERS					.							        .					              		   .       								  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.						 PARAMETER-LIST := ε						.             	  
+					
+FORMAL-PARAMETERS		 FORMAL-PARAMETERS := ID-WITH-TYPE ID-WITH-TYPE'			.								   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.            	  
+
+ID-WITH-TYPE                  ID-WITH-TYPE := IDENTIFIER "":"" TYPE					.								   .									   .										  .											  .										 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.             	  
+
+ID-WITH-TYPE'							.									.								   .									   .										  .											  .                            ID-WITH-TYPE' := "," FORMAL-PARAMETERS		       	.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.						  ID-WITH-TYPE' := ε						.             	  
+
+TYPE									.									.							 TYPE := "integer"				          TYPE := "boolean"    						    	  .					              				  .        								 .					            	.          						.						       	.								.								.					   			  .									 .								.						    		 .				   				.      					     	 .								.								.								.								.								.			  
+
+BODY							   BODY := EXPRESSION							.							 	   .						             	   .			    						BODY := EXPRESSION							   BODY := EXPRESSION								 .						        	.         						.							BODY := EXPRESSION						.								.					   BODY := PRINT-EXPRESSION BODY						 .								.						    BODY := EXPRESSION				   BODY := EXPRESSION					  	 .								.								.						   BODY := EXPRESSION						.								.			  
+
+PRINT-EXPRESSION						.									.								   .									   .										  .											  .										 .								.								.								.								.								.				 PRINT-EXPRESSION := "print" "(" EXPRESSION ")"				 .								.								 .								.								 .								.								.								.								.								.			  
+
+EXPRESSION		   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'			.								   .									   .					     EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'				 .								.								.			   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'		.								.								  .									 .								.       EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'     EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'	 .								.								.			   EXPRESSION := SIMPLE-EXPRESSION SIMPLE-EXPRESSION'		.								. 		 	  
+
+EXPRESSION'							.									.								   .									   .										  .											  .						    EXPRESSION' := "," FORMAL-ARGUMENTS				.								.								.								.								.								  .									 .								.								 .								.							   	 .        						.								.								.							EXPRESSION' := ε					   	.			  
+
+SIMPLE-EXPRESSION             SIMPLE-EXPRESSION := TERM TERM'						.								   .									   .							   SIMPLE-EXPRESSION := TERM TERM'			      SIMPLE-EXPRESSION := TERM TERM'							 .								.								.					SIMPLE-EXPRESSION := TERM TERM'					.								.								  .									 .								.					SIMPLE-EXPRESSION := TERM TERM'		 SIMPLE-EXPRESSION := TERM TERM'					 .								.								.					SIMPLE-EXPRESSION := TERM TERM'                   	.             						.			  
+
+SIMPLE-EXPRESSION'		 	            	.							SIMPLE-EXPRESSION' := ε						   .									   .										  .											  .								  SIMPLE-EXPRESSION' := ε					.						 SIMPLE-EXPRESSION' := ε			SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε						  .							SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε						 .								.						SIMPLE-EXPRESSION' := ε		SIMPLE-EXPRESSION' := "==" EXPRESSION	  SIMPLE-EXPRESSION' := "<" EXPRESSION					.						SIMPLE-EXPRESSION' := ε				SIMPLE-EXPRESSION' := ε	  				
+
+TERM							TERM := FACTOR FACTOR'							.								   .									   .								  TERM := FACTOR FACTOR'						  TERM := FACTOR FACTOR'							 .								.								.						TERM := FACTOR FACTOR'						.								.								  .									 .								.						 TERM := FACTOR FACTOR'				TERM := FACTOR FACTOR'						 .								.								.						TERM := FACTOR FACTOR'						.								.			  
+
+TERM'								.								TERM' := ε							   .									   .										  .											  .									  TERM' := ε							.					TERM' := "+" SIMPLE-EXPRESSION		TERM' := "-" SIMPLE-EXPRESSION				TERM' := ε						TERM' := ε							  .								 TERM' := ε				 TERM' := "or" SIMPLE-EXPRESSION					 .								.							 TERM' := ε						TERM' := ε						TERM' := ε							.							TERM' := ε						TERM' := ε		  
+
+FACTOR					FACTOR := IDENTIFIER IDENTIFIER'						.								   .									   .								    FACTOR := LITERAL							    FACTOR := LITERAL								 .								.								.						 FACTOR := "-" FACTOR						.								.								  .									 .								.						 FACTOR := "not" FACTOR	 FACTOR := "if" "(" EXPRESSION ")" EXPRESSION "else" EXPRESSION .								.								.					 FACTOR := "(" EXPRESSION ")"					.								.			  
+
+FACTOR'								.							    FACTOR' := ε							   .									   .										  .											  .									 FACTOR' := ε 							.							FACTOR' := ε					   	FACTOR' := ε					 FACTOR' := "*" TERM				 FACTOR' := "/" TERM						  .							  FACTOR' := "and" TERM					FACTOR' := ε							 .								.                                  FACTOR' := ε 					FACTOR' := ε						FACTOR' = ε							.						    FACTOR' := ε					    FACTOR' := ε		  
+
+IDENTIFIER'							.							  IDENTIFIER' := ε							   .									   .										  .											  .									IDENTIFIER' := ε						.						   IDENTIFIER' := ε					  IDENTIFIER' := ε					   IDENTIFIER' := ε					   IDENTIFIER' := ε							  .								IDENTIFIER' := ε				   IDENTIFIER' := ε							 .								.							IDENTIFIER' := ε					IDENTIFIER' := ε				   IDENTIFIER' := ε			  IDENTIFIER' := "(" ARGUMENT-LIST ")"			  IDENTIFIER' := ε					  IDENTIFIER' := ε																											
+
+ARGUMENT-LIST			    ARGUMENT-LIST := FORMAL-ARGUMENTS						.								   .									   .						     ARGUMENT-LIST := FORMAL-ARGUMENTS					 ARGUMENT-LIST := FORMAL-ARGUMENTS						 .								.								.				    ARGUMENT-LIST := FORMAL-ARGUMENTS					.								.								  .									 .								.					ARGUMENT-LIST := FORMAL-ARGUMENTS	    ARGUMENT-LIST := FORMAL-ARGUMENTS					 .								.								.				     ARGUMENT-LIST := FORMAL-ARGUMENTS		      ARGUMENT-LIST := ε						.			  
+
+FORMAL-ARGUMENTS		FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'					.								   .									   .						FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'			 FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'						 .								.								.				FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'				.								.								  .									 .								.			  FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'   FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'			 .								.								.			      FORMAL-ARGUMENTS := EXPRESSION EXPRESSION'			.								.			  
+
+LITERAL								.									.								   .									   .								LITERAL := BOOLEAN-LITERAL						LITERAL := INTEGER-LITERAL							 .								.								.								.								.								.								  .									 .								.								 .								.								 .								.								.								.								.								.
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
+																							
