@@ -1,3 +1,0 @@
-fn main() -> integer
-  print(1)
-  1

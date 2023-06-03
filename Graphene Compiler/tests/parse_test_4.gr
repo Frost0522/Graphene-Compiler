@@ -1,6 +1,0 @@
-fn parse_test_4(t : integer) -> boolean
-   if ((t // / 3) == 3)
-         / 3) == 3)
-      print("true")
-   else
-      print("false")

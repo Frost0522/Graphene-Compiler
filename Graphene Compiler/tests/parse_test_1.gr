@@ -1,5 +1,0 @@
-fn parse_test_1(a : integer, b : integer, c : integer) -> integer
-   if (( a + b --c) < (-a * -c))
-      print("true")
-   else
-      print("false")

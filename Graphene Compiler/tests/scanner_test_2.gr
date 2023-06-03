@@ -1,3 +1,0 @@
-//fn printAndDivide(a : integer, b : integer, n : integer) -> integer
-//    print((10 * a) / b)
-//    main (MOD(a*10, b), b, n-1)

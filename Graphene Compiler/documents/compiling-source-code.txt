@@ -1,8 +1,0 @@
-In the source directory open and make editions to the compile.bat (if on Windows) or compile.sh (if on Mac or Linux)
-script if you would like to create a seperate jar file from those currently established. Replace the name.jar on this
-particular line below with whatever name you so choose. 
- 
-jar -cvmf manifest.txt name.jar *.class
-
-Otherwise in the source directory, simply click the compile.bat or compile.sh script after making any changes to the 
-source code. This will create a current.jar file located in the classes directory you may use to run your code.

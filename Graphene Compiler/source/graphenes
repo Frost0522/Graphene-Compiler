@@ -1,2 +1,0 @@
-#!/bin/bash
-java src/Program $1 Scanner
